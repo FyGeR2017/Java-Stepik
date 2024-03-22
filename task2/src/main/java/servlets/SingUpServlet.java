@@ -16,19 +16,20 @@ public class SingUpServlet extends HttpServlet {
         this.accountService = accountService;
     }
 
-    public void doPost(HttpServletRequest request,
-                       HttpServletResponse response) throws ServletException, IOException {
-        String login = request.getParameter("+login");
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) {
+        String login = request.getParameter("login");
         String pass = request.getParameter("password");
 
+        response.setContentType("text/html;charset=utf-8");
+
         if (login == null || pass == null) {
-            response.setContentType("text/html;charset=utf-8");
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }
 
-        final UserProfile user = new UserProfile(login, pass);
-        accountService.addNewUser(user);
+        UserProfile profile = new UserProfile(login, pass);
+        accountService.addNewUser(profile);
+        response.setStatus(HttpServletResponse.SC_OK);
     }
-
 }
