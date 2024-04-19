@@ -28,6 +28,5 @@ public class AdminServlet extends HttpServlet {
         logger.info("{} usersLimit : {}", PAGE_URL, usersLimit);
         resp.getWriter().println(usersLimit);
         resp.setStatus(HttpServletResponse.SC_OK);
-
     }
 }
