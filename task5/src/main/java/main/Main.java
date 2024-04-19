@@ -13,6 +13,7 @@ import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import servlets.AdminServlet;
+import servlets.HomePageServlet;
 
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
@@ -36,9 +37,6 @@ public class Main {
             } catch (IOException e) {
                 logger.warn(e);
                 throw e;
-//                IOException ex = new IOException();
-//                ex.addSuppressed(e);
-//                throw ex;
             }
         } else {
             portString = args[0];
@@ -52,7 +50,7 @@ public class Main {
         AccountServerControllerMBean serverStatistics = new AccountServerController(accountServer);
         MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
 
-        // задание
+        // Задание
         ObjectName usersLimit = new ObjectName("Admin:type=AccountServerController.usersLimit");
         mbs.registerMBean(serverStatistics, usersLimit);
 
@@ -60,6 +58,7 @@ public class Main {
         Server server = new Server(port);
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(new AdminServlet(accountServer)), AdminServlet.PAGE_URL);
+        context.addServlet(new ServletHolder(new HomePageServlet(accountServer)), HomePageServlet.PAGE_URL);
 
         ResourceHandler resource_handler = new ResourceHandler();
         resource_handler.setDirectoriesListed(true);

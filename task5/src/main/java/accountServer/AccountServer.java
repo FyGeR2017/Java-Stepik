@@ -1,6 +1,5 @@
 package accountServer;
 
-
 public class AccountServer implements AccountServerI {
     private int usersCount;
     private int usersLimit;
