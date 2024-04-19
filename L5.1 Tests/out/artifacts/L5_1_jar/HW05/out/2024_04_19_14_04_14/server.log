@@ -1,7 +1,0 @@
-[04-19 14:04:14,492, 315] example.Main Starting at http://127.0.0.1:8080
-[04-19 14:04:14,507, 330] org.eclipse.jetty.util.log Logging initialized @352ms
-[04-19 14:04:14,543, 366] org.eclipse.jetty.server.Server jetty-9.3.z-SNAPSHOT
-[04-19 14:04:14,575, 398] org.eclipse.jetty.server.handler.ContextHandler Started o.e.j.s.ServletContextHandler@6fdbe764{/,null,AVAILABLE}
-[04-19 14:04:14,616, 439] org.eclipse.jetty.server.ServerConnector Started ServerConnector@6c284af{HTTP/1.1,[http/1.1]}{0.0.0.0:8080}
-[04-19 14:04:14,616, 439] org.eclipse.jetty.server.Server Started @461ms
-[04-19 14:04:14,616, 439] example.Main Server started
